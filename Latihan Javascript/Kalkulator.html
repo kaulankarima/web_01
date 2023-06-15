@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="number" id="angka1">
+        <select name="" id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" name="" id="angka2">
+        <span>=</span>
+        <span id="hasil">hasil</span><br><br>
+        <button id="submit">submit</button>
+    </div>
+    <script>
+        const angka1 = document.getElementById("angka1");
+        const angka2 = document.getElementById("angka2");
+        const operator = document.getElementById("operator");
+        const hasil = document.getElementById("hasil");
+        const submit = document.getElementById("submit");
+
+        submit.addEventListener('click'.function)
+        {
+            //hasil.innerText = eval(angka1.value + operator.value + angka2.value);
+            hasil.innerText = Number(angka1.value) + operator.value + Number(angka2.value);
+            //hasil.innerText = Number(angka1.value)-Number(angka2.value);
+            //hasil.innerText = Number(angka1.value)*Number(angka2.value);
+            //hasil.innerText = Number(angka1.value)/Number(angka2.value);
+        }
+
+        let angka1 = document.getElementById("angka1");
+        let angka2 = document.getElementById("angka2");
+        let hasil = document.getElementById("hasil");
+        
+        function ftambah(){
+            hasil.value = Number(angka1.value)+Number(angka2.value);
+        }
+        function fkurang(){
+            hasil.value = Number(angka1.value)-Number(angka2.value);
+        }
+        function fkali(){
+            hasil.value = Number(angka1.value)*Number(angka2.value);
+        }
+        function fbagi(){
+            hasil.value = Number(angka1.value)/Number(angka2.value);
+        }
+
+    </script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+        }
+
+        body {
+            background-color: burlywood
+        }
+
+        article {
+           width: 100%; 
+        }
+
+        .container {
+            width: 320px;
+            background-color: olivedrab;
+            margin: 120px auto;
+        }
+
+        table {
+            width: 100%;
+            border-color: darkolivegreen;
+        }
+
+        td {
+            width: 25%;
+        }
+
+        button {
+            width: 100%;
+            height: 70px;
+            font-size: 24px;
+            background-color: bisque;
+            border: none;
+        }
+
+        #inputtable {
+            height: 120px;
+            font-size: 100px;
+            vertical-align: bottom;
+            text-align: right;
+            padding-right: 16px;
+            background-color: #ececec;
+        }
+    </style>
+</head>
+
+<body>
+    <article>
+        <h2>Yuk Berhitung Pakai Kalkulator!</h2>
+    </article>
+    <div class="container">
+        <table border="0" cellspacing="4">
+            <tr>
+                <td colspan="4" id="inputLabel">0</td>
+            </tr>
+            <tr>
+                <td colspan="3"><button onclick="pushBtn(this);">AC</button></td>
+                <td><button onclick="pushBtn(this);">/</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="pushBtn(this);">7</button></td>
+                <td><button onclick="pushBtn(this);">8</button></td>
+                <td><button onclick="pushBtn(this);">9</button></td>
+                <td><button onclick="pushBtn(this);">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="pushBtn(this);">4</button></td>
+                <td><button onclick="pushBtn(this);">5</button></td>
+                <td><button onclick="pushBtn(this);">6</button></td>
+                <td><button onclick="pushBtn(this);">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="pushBtn(this);">1</button></td>
+                <td><button onclick="pushBtn(this);">2</button></td>
+                <td><button onclick="pushBtn(this);">3</button></td>
+                <td><button onclick="pushBtn(this);">+</button></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button onclick="pushBtn(this);">0</button></td>
+                <td><button onclick="pushBtn(this);">.</button></td>
+                <td><button onclick="pushBtn(this);">=</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var inputLabel = document.getElementById('inputLabel');
+
+        function pushBtn(obj) {
+
+            var pushed = obj.innerHTML;
+
+            if (pushed == '=') {
+                // Calculate
+                inputLabel.innerHTML = eval(inputLabel.innerHTML);
+
+            } else if (pushed == 'AC') {
+                // All Clear
+                inputLabel.innerHTML = '0';
+
+            } else {
+                if (inputLabel.innerHTML == '0') {
+                    inputLabel.innerHTML = pushed;
+
+                } else {
+                    inputLabel.innerHTML += pushed;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

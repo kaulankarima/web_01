@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Sudoku Sederhana</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #999;
+        }
+
+        .fixed {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <table id="sudokuBoard"></table>
+
+    <script>
+        // Matriks Sudoku yang akan diisi
+        var sudokuBoard = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ];
+
+        // Fungsi untuk menggambar papan Sudoku
+        function drawSudokuBoard() {
+            var table = document.getElementById("sudokuBoard");
+
+            for (var i = 0; i < 9; i++) {
+                var row = document.createElement("tr");
+
+                for (var j = 0; j < 9; j++) {
+                    var cell = document.createElement("td");
+                    cell.setAttribute("id", "cell_" + i + "_" + j);
+
+                    // Tandai cell yang tidak bisa diubah
+                    if (sudokuBoard[i][j] !== 0) {
+                        cell.classList.add("fixed");
+                    }
+
+                    cell.addEventListener("click", cellClickHandler);
+                    row.appendChild(cell);
+                }
+
+                table.appendChild(row);
+            }
+        }
+
+        // Fungsi untuk menangani klik pada cell Sudoku
+        function cellClickHandler(event) {
+            var cellId = event.target.getAttribute("id");
+            var cellInfo = cellId.split("_");
+            var row = parseInt(cellInfo[1]);
+            var col = parseInt(cellInfo[2]);
+
+            // Ambil input dari pengguna
+            var userInput = prompt("Masukkan angka (1-9) untuk cell [" + row + "][" + col + "]");
+
+            // Validasi input pengguna
+            if (isValidInput(userInput)) {
+                // Perbarui matriks Sudoku
+                sudokuBoard[row][col] = parseInt(userInput);
+
+                // Perbarui tampilan papan Sudoku
+                updateSudokuBoard();
+            } else {
+                alert("Masukan tidak valid! Masukkan angka antara 1 dan 9.");
+            }
+        }
+
+        // Fungsi untuk memperbarui tampilan papan Sudoku
+        function updateSudokuBoard
